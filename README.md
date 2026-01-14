@@ -81,6 +81,19 @@ If you want to Lerp other values type, use the generic `AwaitableUtility.Interpo
 
 > LerpAsyn functions use Unscaled Delta Time. Therefore, those functions will work when `Time.deltaTime == 0f` (the game is paused).
 
+### MonoBehaviour Extension Functions
+
+Inside MonoBehavior components, safelly wait for seconds asynchronously without throwing any exception if the component (or the GameObject itself) is destroyed during the waiting operation
+
+```csharp
+public async void UnequipWeapon()
+{
+    // Play Unequip animation
+    await this.WaitForSecondsAsync(2);
+    // Dispose remain weapon
+}
+```
+
 ## Installation
 
 ### Using the Package Registry Server
