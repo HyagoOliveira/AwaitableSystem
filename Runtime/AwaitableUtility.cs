@@ -49,7 +49,7 @@ namespace ActionCode.AwaitableSystem
         /// <param name="animation">The playing animation.</param>
         /// <returns>An asynchronously operation.</returns>
         public static async Awaitable WaitWhilePlayingAsync(Animation animation) =>
-            await WaitWhileAsync(() => animation.isPlaying);
+            await WaitWhileAsync(() => animation && animation.isPlaying);
 
         /// <summary>
         /// Waits asynchronously for the given number of <paramref name="frames"/>
