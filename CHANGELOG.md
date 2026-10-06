@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- AwaitableOperation class
 - WaitForFixedFramesAsync function
 
 ## [1.4.0] - 2026-07-10
