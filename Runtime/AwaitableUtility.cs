@@ -56,7 +56,7 @@ namespace ActionCode.AwaitableSystem
             await WaitWhileAsync(() => animation && animation.isPlaying);
 
         /// <summary>
-        /// Waits asynchronously for the given number of <paramref name="frames"/>
+        /// Waits asynchronously for the given number of <paramref name="frames"/>.
         /// </summary>
         /// <param name="frames">The frames to wait for.</param>
         /// <param name="token">Optional cancellation token.</param>
@@ -66,8 +66,22 @@ namespace ActionCode.AwaitableSystem
             uint current = 0;
             while (current++ < frames)
             {
-                if (token.IsCancellationRequested) return;
-                await Awaitable.NextFrameAsync();
+                await Awaitable.NextFrameAsync(token);
+            }
+        }
+
+        /// <summary>
+        /// Waits asynchronously for the given number of <paramref name="frames"/> using <see cref="Awaitable.FixedUpdateAsync"/>.
+        /// </summary>
+        /// <param name="frames">The frames to wait for.</param>
+        /// <param name="token">Optional cancellation token.</param>
+        /// <returns>An asynchronously operation.</returns>
+        public static async Awaitable WaitForFixedFramesAsync(uint frames, CancellationToken token = default)
+        {
+            uint current = 0;
+            while (current++ < frames)
+            {
+                await Awaitable.FixedUpdateAsync(token);
             }
         }
 
